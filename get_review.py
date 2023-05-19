@@ -1,14 +1,18 @@
+#다운받은 책 정보를 가져와 해당 정보를 바탕으로 리뷰 데이터 및 리뷰 마스킹 벗기기
 import os, time
 from turtle import onclick
 import requests
 from bs4 import BeautifulSoup
 
 sess = requests.Session() 
-sess.proxies = {'http':'socks5://127.0.0.1:9150', 'https':'socks5://127.0.0.1:9150'}#토르를 쓰기위한 프록시 설정
-adapter = requests.adapters.HTTPAdapter(pool_connections=100, pool_maxsize=100)
-sess.mount("http://", adapter)
+# sess.proxies = {'http':'socks5://127.0.0.1:9150', 'https':'socks5://127.0.0.1:9150'}#토르를 쓰기위한 프록시 설정
+# adapter = requests.adapters.HTTPAdapter(pool_connections=100, pool_maxsize=100)
+# sess.mount("http://", adapter)
 
-def get_xls_info(file_path): #xls파일 정보를 딕셔너리에 저장하는 함수
+# key : 책 랭킹
+# value : (B_Num, B_Name)
+
+def get_xls_info(file_path): # xls 파일 정보를 딕셔너리에 저장하는 함수
     with open(file_path,'r')as f:
             data = f.read()
     soup = BeautifulSoup(data, 'html.parser')
@@ -21,7 +25,7 @@ def get_xls_info(file_path): #xls파일 정보를 딕셔너리에 저장하는 �
         dict_[number]= b,c  
     return dict_
 
-def make_link(p_num):#리뷰링크들 가져오는 함수
+def make_link(p_num): #리뷰링크들 가져오는 함수
     m_num = p_num
     murl = "http://www.yes24.com/Product/communityModules/GoodsReviewList/{}".format(m_num)
     #http://www.yes24.com/Product/communityModules/GoodsReviewList/상품번호
@@ -68,12 +72,12 @@ def get_review(url):#아이디와 평점을 가져오는 함수
 import os
 import json
 
-if __name__ == "__main__":
-    for key, value in list(get_file_path().items())[31:]:
+if __name__ == "__main__": #책 50개를 뽑아서 그 책 리뷰 정보 수집
+    for key, value in list(get_file_path().items()):
         print(f"{key} GET")
         product = get_xls_info(value)
-        for rank, product_info in list(product.items())[:10]:
+        for rank, product_info in list(product.items())[:50]:
             url = make_link(product_info[0])
-            print("│ {}-{}({}/{})".format(product_info[0], product_info[1], rank, 10))
+            print("│ {}-{}({}/{})".format(product_info[0], product_info[1], rank, 50))
             with open(f'review/{product_info[0]}.json', 'w')as f:
                 json.dump(get_review(url), f, ensure_ascii=False, indent = 3)

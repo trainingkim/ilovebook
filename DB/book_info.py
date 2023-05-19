@@ -26,11 +26,6 @@ def get_file_path(): #파일을 가져오는 함수
             return_value[file_name.split('.')[0]] = os.path.join(r'..\file',file_name)
     return return_value
 
-def get_ave():
-    for a in list(os.walk('../review/')):
-        aver=int(a.JUM_1+a.JUM_2)/2
-        return aver
-
 import os
 import mysql.connector
 import json
@@ -46,15 +41,41 @@ mycursor = mydb.cursor()
 
 JUM_1 = "SELECT * FROM review where JUM_1=%s"
 JUM_2 = "SELECT * FROM review where JUM_=%s"
-#sql = "INSERT INTO B_info (B_Num,B_Pri,B_Name,B_Auth,B_Pub,B_CATE,B_CATE2,B_RAN,B_AVE) VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s)"
+sql = "INSERT INTO B_info (B_Num,B_Pri,B_Name,B_Auth,B_Pub,B_CATE,B_CATE2,B_RAN,B_AVE) VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s)"
 #필드 상품번호 / 상품가격 / 상품명 / 저자 / 출판사 / 카테고리1 / 카테고리2 / 랭크
 
 if __name__ == "__main__": #xls 필요정보들 읽어서 DB에 저장
+    '''
+    DB에 b_info 데이터를 넣는 작업1
+    '''
+    # for key, value in list(get_file_path().items()):
+    #     print(f"{key} GET")
+    #     product = get_xls_info(value)
+    #     for rank, product_info in list(product.items())[:10]:
+    #         B_Num = int(product_info[0])
+    #         B_Pri = int(product_info[2].replace(',','').replace("원", ""))
+    #         B_NAME = product_info[1]
+    #         B_AUTH = product_info[3]
+    #         B_Pub = product_info[4]
+    #         if len(key.split('-')) == 2:
+    #             B_CATE, B_CATE2 = key.split('-')
+    #         else:
+    #             B_CATE = key.split('-')[0]
+    #             B_CATE2 = '-'.join(key.split('-')[1:])
+    #         B_CATE2 = B_CATE2.replace("_", "/")
+    #         B_RAN = rank
+    #         B_AVE = 0
+    #         val = B_Num, B_Pri, B_NAME, B_AUTH, B_Pub, B_CATE, B_CATE2, B_RAN,B_AVE
+    #         mycursor.execute(sql, val)
+    #         mydb.commit()
+    '''
+    DB에 넣은 review 데이터를 통해서 평균을 구하는 작업2
+    '''
     select_query = "select b_num from b_info;"
 
     review_query = "select JUM_1, JUM_2 from review where B_Num = %s"
-    update_query = "UPDATE b_info SET B_NUM_1=%s, B_NUM_2=%s, B_AVE=%s where B_NUM = %s";
-    mycursor.execute(select_query)
+    update_query = "UPDATE b_info SET B_NUM_1=%s, B_NUM_2=%s, B_AVE=%s where B_NUM = %s"
+    mycursor.execute(select_query) #execute
     b_nums = mycursor.fetchall()
     for b_num in b_nums:
         result_num1 = 0
@@ -77,23 +98,3 @@ if __name__ == "__main__": #xls 필요정보들 읽어서 DB에 저장
         parameters = (result_num1, result_num2, ave, b_num[0])
         mycursor.execute(update_query, parameters)
         mydb.commit()
-    # for key, value in list(get_file_path().items()):
-    #     print(f"{key} GET")
-    #     product = get_xls_info(value)
-    #     for rank, product_info in list(product.items())[:10]:
-    #         B_Num = int(product_info[0])
-    #         B_Pri = int(product_info[2].replace(',','').replace("원", ""))
-    #         B_NAME = product_info[1]
-    #         B_AUTH = product_info[3]
-    #         B_Pub = product_info[4]
-    #         if len(key.split('-')) == 2:
-    #             B_CATE, B_CATE2 = key.split('-')
-    #         else:
-    #             B_CATE = key.split('-')[0]
-    #             B_CATE2 = '-'.join(key.split('-')[1:])
-    #         B_CATE2 = B_CATE2.replace("_", "/")
-    #         B_RAN = rank
-    #         B_AVE = get_ave()
-    #         val = B_Num, B_Pri, B_NAME, B_AUTH, B_Pub, B_CATE, B_CATE2, B_RAN,B_AVE
-    #         #mycursor.execute(sql, val)
-    #         mydb.commit()

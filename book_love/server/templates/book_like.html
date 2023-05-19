@@ -1,0 +1,178 @@
+<!--좋아하는 책 리스트 페이지 템플릿-->
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <style>
+            .jang {
+                background: url("{{ url_for('static', filename='img/header_img.jpg') }}");
+                background-size: cover; /* for IE9+, Safari 4.1+, Chrome 3.0+, Firefox 3.6+ */
+                -webkit-background-size: cover; /* for Safari 3.0 - 4.0 , Chrome 1.0 - 3.0 */
+                -moz-background-size: cover; /* optional for Firefox 3.6 */ 
+                -o-background-size: cover; /* for Opera 9.5 */
+                margin: 0; /* to remove the default white margin of body */
+                padding: 0; /* to remove the default white margin of body */
+                overflow: hidden;
+            }
+            .jang-ul {
+                padding: 0;
+            }
+            .jang-li {
+                display : inline-block;
+                border-style: solid;
+                border-color: rgba(144, 101, 191);
+                border-radius: 10px;
+            }
+        </style>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>I Love Book - For Readers</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand jang-title" href="/">책 좋아</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">홈</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">카테고리</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">전체 도서</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                {% for book_cate in book_cate_list %}
+                                    <li><a class="dropdown-item" href="/cate/{{loop.index}}">{{book_cate}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            책 리스트
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5 jang">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder jang-title">책 좋아</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">- 좋아하는 책 리스트 -</p>
+                    <br>
+                    <button class="btn btn-outline-dark display-4 fw-bolder jang-title" onclick="book_recommend()">책 추천 받기</button>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <!-- cate_select_detail -->
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder jang-title">{{cate_select}}</h1>
+                </div>
+                <ul class="jang-ul">
+                    {% for cate_detail in cate_select_detail %}
+                    <li class="jang-li"><a class="dropdown-item" href="/cate/{{cate_index}}/{{loop.index}}">{{cate_detail}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {% for book in book_datas %}
+
+                        <!-- <h1>{{ book }}</h1> -->
+                        <div class="col mb-5 {{book[0]}}_here">
+                            <div class="card h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="https://image.yes24.com/Goods/{{book[0]}}/L" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h5 class="fw-bolder">책 이름: {{book[2]}}</h5><br>
+                                        <h10 class="fw-bolder">저자/출판사: {{book[3]}}/{{book[4]}}</h7><br>
+                                        <h10 class="fw-bolder">분야: {{book[5]}}-{{book[6]}}</h7><br>
+                                        <!-- Product reviews-->
+                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                            <div class="bi-star-fill"></div>{{ book[8] }}
+                                        </div>
+                                        <!-- Product price-->
+                                        {{book[1]}}
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto {{book[0]}}" id="{{book[2]}}" onclick="book_delete({{book[0]}})">좋아하는 책 삭제</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!--테마.JS-->
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    </body>
+</html>
+<script>
+    var setCookie = function(name, value, exp) {
+        var date = new Date();
+        date.setTime(date.getTime() + exp*24*60*60*1000);
+        document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+    };
+    var getCookie = function(name) {
+      var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+      return value? value[2] : '[]';
+  };
+    book_list = JSON.parse(getCookie('book_list'));
+    $('.rounded-pill')[0].textContent = JSON.parse(getCookie('book_list')).length
+    function book_append(book_num){
+        if (book_list.includes(book_num))
+        {
+            alert("중복된 책을 선택하셨습니다.")
+            return ;
+            
+        }
+        book_name = $('.'+book_num).attr('id')
+        book_list.push(book_num);
+        setCookie('book_list', JSON.stringify(book_list), 1);
+        $('.rounded-pill')[0].textContent = JSON.parse(getCookie('book_list')).length
+        alert('"'+book_name+'"책을 좋아하는 책에 담았습니다.')
+        
+    }
+    function book_delete(book_num)
+    {
+        book_list = book_list.filter((element) => element !== book_num)
+        setCookie('book_list', JSON.stringify(book_list), 1);
+        $('.rounded-pill')[0].textContent = JSON.parse(getCookie('book_list')).length
+        book_name = $('.'+book_num).attr('id')
+        $('.'+book_num+'_here').remove()
+        alert('"'+book_name+'"책을 삭제했습니다.')
+    }
+    function book_recommend()
+    {
+        if(book_list.length > 1)
+        {
+            location.href = '/book_recommend';
+            return;
+        }
+        alert('우선 좋아하는 책을 먼저 선택해주세요.');
+        
+    }
+</script>

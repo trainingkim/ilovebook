@@ -4,11 +4,11 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-def get_file_path():#리뷰DB
+def get_file_path():# 리뷰 파일 list 가져오기
     for file_name in list(os.walk('../review/')):
         return file_name[2]
 
-def get_jason(path):#제이슨파일 
+def get_json(path): # json 파일 가져오기 
     f = open(path)
     try:
         data = json.load(f)
@@ -21,7 +21,7 @@ def get_jason(path):#제이슨파일
 
 reviews = dict()
 for j_p in get_file_path():
-    reviews[j_p.split('.')[0]] = get_jason('../review/'+j_p)
+    reviews[j_p.split('.')[0]] = get_json('../review/'+j_p)
 #print(j_p)
 
 
@@ -38,7 +38,7 @@ mycursor = mydb.cursor() #mysql
 sql = "INSERT INTO review (USER, B_NUM, RAN, CATE, CATE2,JUM_1,JUM_2) VALUES (%s,%s,%s,%s,%s,%s,%s)"
 
 if __name__ == "__main__":#select * from b_info where B_Num = {} order by B_RAN ASC;
-     for book_num, reviews_dict in reviews.items():
+     for book_num, reviews_dict in reviews.items(): #리뷰 데이터 insert
         print(f"{book_num} review get")
         mycursor.execute("select B_RAN, B_CATE, B_CATE2  from b_info where B_Num = {} order by B_RAN ASC limit 1;".format(book_num))
         try:
