@@ -2,11 +2,12 @@
 
 <img width="2480" alt="책좋아2" src="https://github.com/trainingkim/ilovebook/assets/115849283/c894cff6-b3b8-474a-ac8b-6a010ebe3153">
 
-<img width="143" alt="책좋아1" src="https://github.com/trainingkim/ilovebook/assets/115849283/044b7315-c93e-450e-a0a4-bec52ae8a7e7">
+<img width="818" alt="책좋아1" src="https://github.com/trainingkim/ilovebook/assets/115849283/6ce16472-3630-4105-8b37-53b70c95ce73">
 
-<img width="186" alt="책좋아3" src="https://github.com/trainingkim/ilovebook/assets/115849283/b236650e-939b-44ac-93dd-365461c68e9d">
+<img width="818" alt="책좋아3" src="https://github.com/trainingkim/ilovebook/assets/115849283/ff447012-1c08-40b0-9cb0-38e72e255aed">
 
-<img width="176" alt="책좋아4" src="https://github.com/trainingkim/ilovebook/assets/115849283/53dbb002-826e-4921-9e66-2aedeb85e290">
+<img width="818" alt="책좋아4" src="https://github.com/trainingkim/ilovebook/assets/115849283/e0cceff4-d597-4e03-aaee-1f3323868c3b">
+
 
 <img width="200" alt="책좋아5" src="https://github.com/trainingkim/ilovebook/assets/115849283/6deaa01a-6ac6-4c17-8da3-d687d1e8432e">
 
