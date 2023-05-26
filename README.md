@@ -4,9 +4,9 @@
 
 <img width="325" alt="책좋아1" src="https://github.com/trainingkim/ilovebook/assets/115849283/bfe259a5-dbcf-43bc-9e45-5b16f4bfea4c">
 
-<img width="818" alt="책좋아3" src="https://github.com/trainingkim/ilovebook/assets/115849283/b0e059f1-4b4c-4c62-ba7e-206931be70c4">
+<img width="325" alt="책좋아3" src="https://github.com/trainingkim/ilovebook/assets/115849283/7b600c9a-b9e5-4885-a663-6ab0c22becc6">
 
-<img width="818" alt="책좋아4" src="https://github.com/trainingkim/ilovebook/assets/115849283/720534f4-0d91-447e-8228-94023b38bf8f">
+<img width="325" alt="책좋아4" src="https://github.com/trainingkim/ilovebook/assets/115849283/86706e09-df01-4f6d-a2e5-c3da047629db">
 
 <img width="325" alt="책좋아5" src="https://github.com/trainingkim/ilovebook/assets/115849283/99de43ad-41a0-4d21-8b92-f3431c1840ca">
 
