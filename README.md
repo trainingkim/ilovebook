@@ -1,5 +1,7 @@
 ![2014301502_김연수_팜플렛](https://github.com/trainingkim/ilovebook/assets/115849283/94e6bd3a-4bef-499e-a77e-b42b7658a32b)
 
+<div align=center>
+  
 <img width="2480" alt="책좋아2" src="https://github.com/trainingkim/ilovebook/assets/115849283/c894cff6-b3b8-474a-ac8b-6a010ebe3153">
 
 <img width="325" alt="책좋아1" src="https://github.com/trainingkim/ilovebook/assets/115849283/bfe259a5-dbcf-43bc-9e45-5b16f4bfea4c">
@@ -15,3 +17,5 @@
 <img width="325" alt="책좋아8" src="https://github.com/trainingkim/ilovebook/assets/115849283/948af0a9-f111-4403-864f-02fab3887ed6">
 
 <img width="251" alt="책좋아9" src="https://github.com/trainingkim/ilovebook/assets/115849283/bbb22c1d-4bfe-4398-b637-3762e26c383d">
+
+</div>
