@@ -14,4 +14,4 @@
 
 <img width="325" alt="책좋아8" src="https://github.com/trainingkim/ilovebook/assets/115849283/948af0a9-f111-4403-864f-02fab3887ed6">
 
-![책좋아9](https://github.com/trainingkim/ilovebook/assets/115849283/18667baf-4bf2-4ed4-bd55-2a490f0035dd)
+<img width="251" alt="책좋아9" src="https://github.com/trainingkim/ilovebook/assets/115849283/bbb22c1d-4bfe-4398-b637-3762e26c383d">
