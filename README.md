@@ -16,6 +16,8 @@
 
 <img width="325" alt="책좋아8" src="https://github.com/trainingkim/ilovebook/assets/115849283/948af0a9-f111-4403-864f-02fab3887ed6">
 
-<img width="251" alt="책좋아9" src="https://github.com/trainingkim/ilovebook/assets/115849283/bbb22c1d-4bfe-4398-b637-3762e26c383d">
+<img width="551" alt="책좋아9" src="https://github.com/trainingkim/ilovebook/assets/115849283/bbb22c1d-4bfe-4398-b637-3762e26c383d">
+
+<img width="551" alt="책좋아10" src="https://github.com/trainingkim/ilovebook/assets/115849283/00b3d9a3-3171-41ba-ab4d-e3501984f243">
 
 </div>
