@@ -1,4 +1,4 @@
-<!--책 검색 페이지 템플릿-->
+<!-- 책 검색 페이지 템플릿 -->
 <!DOCTYPE html>
 <html lang="kr">
     <head>
@@ -145,7 +145,7 @@
   };
     book_list = JSON.parse(getCookie('book_list'));
     $('.rounded-pill')[0].textContent = JSON.parse(getCookie('book_list')).length
-    function book_append(book_num){
+    function book_append(book_num){ 
         if (book_list.includes(book_num))
         {
             alert("중복된 책을 선택하셨습니다.")

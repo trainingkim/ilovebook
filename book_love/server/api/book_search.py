@@ -1,5 +1,7 @@
+#책 검색 수행
 import mysql.connector
 from collections import defaultdict
+
 
 # +---------+-----------+------+-----+---------+-------+
 # | Field   | Type      | Null | Key | Default | Extra |
@@ -11,6 +13,7 @@ from collections import defaultdict
 # | B_Pub   | char(100) | YES  |     | NULL    |       |
 # | B_CATE  | char(100) | YES  |     | NULL    |       |
 # | B_CATE2 | char(100) | YES  |     | NULL    |       |
+# | B_CATE3 | char(100) | YES  |     | NULL    |       |
 # | B_RAN   | int(11)   | YES  |     | NULL    |       |
 # | B_AVE   | float     | YES  |     | NULL    |       |
 # | B_NUM_1 | float     | YES  |     | NULL    |       |
@@ -28,7 +31,7 @@ class Book_Search(object):
         password="1234",
         database="book"
         )
-    def Get_Book_Info_Search(self, book_name):
+    def Get_Book_Info_Search(self, book_name): # 검색어를통해 책 정보를 가져옴
         sql = f"select * from b_info where B_Name LIKE \"%{book_name}%\""
         self.mycursor.execute(sql)
         book_info = self.mycursor.fetchall()
@@ -37,7 +40,7 @@ class Book_Search(object):
         return book_info
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #검색 Test
     bl = Book_Loader()
     print(bl.Get_Book_Info_Search('공주'))
     # print(bl.Get__List())

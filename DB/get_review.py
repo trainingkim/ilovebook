@@ -1,3 +1,4 @@
+#책 리뷰를 분석
 import mysql.connector
 import json, os
 from collections import defaultdict
@@ -8,7 +9,7 @@ def get_category():#카테고리를 받아오는 함수
         return_value[file_name.split('-')[0]].append(file_name.split('-')[1].replace('.xls',''))
     return return_value
 
-def category_get_reviews(cate1, cate2 = None):
+def category_get_reviews(cate1, cate2 = None): #카테고리의 리뷰를 MySQL에서 가져오는 함수
     if cate2:
         sql = 'select * from review where CATE=%s and CATE2 = %s'
         mycursor.execute(sql, (cate1,cate2))
@@ -20,7 +21,7 @@ def category_get_reviews(cate1, cate2 = None):
 mydb = mysql.connector.connect(#Database 연결
    host="localhost",
    user="root",
-   password="dkqkffhs123",
+   password="1234",
    database="book"
  )
 mycursor = mydb.cursor() #mysql

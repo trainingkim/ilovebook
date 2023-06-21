@@ -1,4 +1,4 @@
-<!--책 추천 페이지 템플릿-->
+<!-- 책 추천 페이지 템플릿 -->
 <!DOCTYPE html>
 <html lang="kr">
     <head>
@@ -140,7 +140,7 @@
   };
     book_list = JSON.parse(getCookie('book_list'));
     $('.rounded-pill')[0].textContent = JSON.parse(getCookie('book_list')).length
-    function book_append(book_num){
+    function book_append(book_num){ /*중복선택 방지, 선택한 책 리스트 관리*/
         if (book_list.includes(book_num))
         {
             alert("중복된 책을 선택하셨습니다.")
